@@ -1,5 +1,6 @@
 package com.toneloc.sequels;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,10 +35,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //NOT an override
     public void seedDatabase() {
-
+        insertSequel(1, "Empire Strikes Back");
+        insertSequel(2, "Toy Story 2");
+        insertSequel(3, "Halloween 2");
+        insertSequel(4, "Mulan 2");
+        insertSequel(5, "Taken 2");
+        insertSequel(6, "Deathwish 2");
+        insertSequel(7, "Zoolander 2");
     }
 
     public void insertSequel(int id, String name) {
-        public static final String = "INSERT INTO  .. "
+        //INSERT INTO table_name VALUES (
+        SQLiteDatabase db = getReadableDatabase();
+        //special type of hash map for Database values
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("name", id);
+        //protip -- great place to put a breakpoint to see what's up
+        //insert into table null values
+        db.insert("sequels", null, values);
     }
 }
